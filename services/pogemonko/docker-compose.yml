@@ -1,0 +1,11 @@
+version: '2.4'
+
+services:
+  pogemonko:
+    build: .
+    ports:
+      - 9172:31337
+    restart: on-failure
+    volumes:
+      - ./users:/var/pogemonko/users
+    pids_limit: 500
