@@ -10,7 +10,7 @@ find . -name 'checker.py' | while read line; do
 	    if [ $A != 101 ]
 	    then 
 	    	echo "CHECK failed! Got code $A"
-	    	false
+	    	exit 1
 	    else
 	    	echo "CHECK passed!"
 	    	true
@@ -21,7 +21,7 @@ find . -name 'checker.py' | while read line; do
 	    if [ $A != 101 ]
 	    then 
 	    	echo "PUT failed! Got code $A"
-	    	false
+	    	exit 1
 	    else
 	    	echo "PUT passed!"
 	    	true
@@ -32,7 +32,7 @@ find . -name 'checker.py' | while read line; do
 	    if [ $A != 101 ]
 	    then 
 	    	echo "GET failed! Got code $A"
-	    	false
+	    	exit 1
 	    else
 	    	echo "GET passed!"
 	    	true
