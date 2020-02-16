@@ -1,0 +1,21 @@
+version: "2.4"
+
+services:
+  web:
+    build: .
+    restart: on-failure
+
+  nginx:
+    image: nginx:1.15.9-alpine
+    ports:
+      - "9171:9171"
+    restart: on-failure
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/proxy_params:/etc/nginx/proxy_params
+
+  redis:
+    image: redis:5.0.7-alpine
+    restart: on-failure
+    sysctls:
+      net.core.somaxconn: 1024

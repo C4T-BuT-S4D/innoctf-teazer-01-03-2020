@@ -1,0 +1,42 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="row mt-3 justify-content-center">
+        <div class="col justify-content-center">
+            <form class="form" action="/users/{{ username }}/" method="post">
+                <div class="form-row justify-content-center">
+                    <div class="col">
+                        <h4 class="text-center">Validate you are {{ username }}</h4>
+                        <p>To prove that's really you, enter any password you've saved</p>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-8">
+                        <label for="password-input">Password</label>
+                        <input type="text" class="form-control {{ 'is-invalid' if error else '' }}" name="password"
+                               id="password-input">
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if passwords %}
+        <div class="row justify-content-center mt-5">
+            <div class="col-6">
+                <p>Welcome, {{ username }} (or not, who knows)</p>
+                <p>Here are your passwords:</p>
+                <ul class="list-group">
+                    {% for p in passwords %}
+                        <li class="list-group-item">{{ p }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}
