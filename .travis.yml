@@ -16,6 +16,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
+  - pip install -r checkers/requirements.txt
   - find . -name "docker-compose.yml" -exec docker-compose -f {} up --build -d \;
 
 before_script:
