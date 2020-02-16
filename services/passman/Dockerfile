@@ -8,7 +8,9 @@ ADD requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 ADD . /app
-RUN python app/setup.py install
+WORKDIR /app
+RUN python setup.py install
+WORKDIR /
 
 ADD ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
