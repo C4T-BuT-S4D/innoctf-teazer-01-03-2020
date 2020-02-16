@@ -16,7 +16,6 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
-  - python tests/setup_forcad.py
   - find . -name "docker-compose.yml" -exec docker-compose -f {} up --build -d \;
 
 before_script:
