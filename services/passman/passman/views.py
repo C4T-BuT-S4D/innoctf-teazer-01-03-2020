@@ -51,7 +51,6 @@ def logout(request):
 
 
 @view_config(route_name='users', renderer='templates/users.jinja2')
-@login_required
 @with_user_response
 def list_users(_request):
     users = User.list()

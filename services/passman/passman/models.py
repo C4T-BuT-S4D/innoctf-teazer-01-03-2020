@@ -98,7 +98,7 @@ class Password:
         passwords = db.List(f'user:{self.user}:passwords')
         passwords.prepend(self.password)
 
-        bf = db.bloom_filter(f'user:{self.user}:bf', size=4)
+        bf = db.bloom_filter(f'user:{self.user}:bf', size=20)
         bf.add(self.password)
 
     @staticmethod
@@ -110,7 +110,7 @@ class Password:
     @staticmethod
     def check(user: str, password: str) -> bool:
         db = get_db()
-        bf = db.bloom_filter(f'user:{user}:bf', size=4)
+        bf = db.bloom_filter(f'user:{user}:bf', size=20)
         return bf.contains(password)
 
     @classmethod
