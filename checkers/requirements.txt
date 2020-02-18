@@ -1,3 +1,4 @@
 gevent
 checklib
 requests
+git+https://github.com/Gallopsled/pwntools.git@dev
