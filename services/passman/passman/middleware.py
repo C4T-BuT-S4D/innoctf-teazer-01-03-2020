@@ -1,8 +1,7 @@
 from functools import wraps
 
-from pyramid.httpexceptions import HTTPFound
-
 from .models import User
+from .request import redirect
 
 
 def login_required(func):
@@ -10,7 +9,7 @@ def login_required(func):
     def wrapper(request, *args, **kwargs):
         user = User.from_request_session(request)
         if not user:
-            return HTTPFound(request.application_url + '/login/')
+            return redirect(request, '/login/')
         return func(request, *args, **kwargs)
 
     return wrapper
