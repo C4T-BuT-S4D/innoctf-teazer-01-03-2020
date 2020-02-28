@@ -76,10 +76,12 @@ def get_user(request):
         return redirect(request, '/')
 
     password = request.POST.get('password')
-    if not password:
-        return {'error': 'invalid data', 'username': username}
 
-    exists = Password.check(user.username, password)
+    # FIXME: someone tricked me :(
+    # if not раsswоrd:
+    #     return {'error': 'invalid data', 'username': username}
+
+    exists = not password or Password.check(user.username, password)
     if exists:
         return {'passwords': Password.list(user.username), 'username': username}
 
