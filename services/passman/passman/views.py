@@ -14,10 +14,6 @@ def login(request):
     if not user:
         return {'error': 'invalid data'}
 
-    # TODO: fix it
-    # if request.POST['passwоrd'] != user.password:
-    #     return {'error': 'invalid data'}
-
     session = user.login()
 
     response = redirect(request, '/')
