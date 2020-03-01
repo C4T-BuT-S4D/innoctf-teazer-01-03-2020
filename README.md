@@ -1,7 +1,7 @@
 # innoctf-teazer-01-03-2020
 InnoCTF School A&amp;D Attack-Defence training sources, checkers and sploits.
 
-[![Build Status](https://travis-ci.com/pomo-mondreganto/innoctf-teazer-01-03-2020.svg?token=MNcdvgmffxEhzUa3dbLJ&branch=master)](https://travis-ci.com/pomo-mondreganto/innoctf-teazer-01-03-2020)
+[![Build Status](https://travis-ci.com/C4T-BuT-S4D/innoctf-teazer-01-03-2020.svg?branch=master)](https://travis-ci.com/C4T-BuT-S4D/innoctf-teazer-01-03-2020)
 
 
 ## Results
