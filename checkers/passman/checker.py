@@ -36,17 +36,20 @@ class Checker(BaseChecker):
 
         def check1():
             returned = self.mch.list_passwords(requests, u, random.choice(passwords))
-            self.assert_eq(sorted(passwords), sorted(returned), 'Invalid password listing')
+            if not set(passwords).issubset(set(returned)):
+                cquit(Status.MUMBLE, 'Invalid password listing', 'check1')
 
         def check2():
             returned = self.mch.list_passwords(sess, u, random.choice(passwords))
-            self.assert_eq(sorted(passwords), sorted(returned), 'Invalid password listing')
+            if not set(passwords).issubset(set(returned)):
+                cquit(Status.MUMBLE, 'Invalid password listing', 'check2')
 
         def check3():
             u1, p1 = self.mch.register()
             tsess = self.mch.login(u1, p1)
             returned = self.mch.list_passwords(tsess, u, random.choice(passwords))
-            self.assert_eq(sorted(passwords), sorted(returned), 'Invalid password listing')
+            if not set(passwords).issubset(set(returned)):
+                cquit(Status.MUMBLE, 'Invalid password listing', 'check3')
 
         checks = [check1, check2, check3]
         random.shuffle(checks)
@@ -63,8 +66,8 @@ class Checker(BaseChecker):
         passwords.append(flag)
         random.shuffle(passwords)
 
-        for p in passwords:
-            self.mch.add_password(sess, p)
+        for pp in passwords:
+            self.mch.add_password(sess, pp)
 
         self.cquit(Status.OK, f'{u}:{p}:{random.choice(passwords)}')
 
